@@ -1,0 +1,122 @@
+body{
+  font-family: helvetica;
+}
+
+.bg-mahlus{
+
+  background-image: url(w.jpg);
+
+  color: #fff;
+
+}
+.bg-mahlus h2{
+  color: #fff;
+}
+
+.leaflet{
+  margin: 0;
+  font-size: 18pt;
+  transform: translate3d(0px, 0px, 0px);
+}
+.leaflet h3{
+  font-size: 20pt;
+  text-align: center;
+}
+
+#mapid{
+  overflow: none;
+
+  height: 500px;
+
+}
+
+.list-group-item{
+  border: 0;
+}
+
+.btn-cc{
+  border-color: #804000;
+  color: #804000;
+}
+.btn-cc:hover{
+  background: #804000;
+  border-color: #804000;
+}
+
+
+.btn-dbs{
+  border-color: #e60000;
+  color: #e60000;
+}
+.btn-dbs:hover{
+  background: #e60000;
+  border-color: #e60000;
+}
+
+
+.btn-bugs{
+  border-color: #ffcc00;
+  color: #ffcc00;
+}
+.btn-bugs:hover{
+  background: linear-gradient(to bottom, #ffcc00 0%, #cc6600 100%);
+  border-color: #ffcc00;
+}
+
+
+.btn-pkpi{
+  border-color: #cc6600;
+  color: #cc6600;
+}
+.btn-pkpi:hover{
+  border-color: #ffff99;
+  background: linear-gradient(to bottom, #ffff99 0%, #cc6600 100%);
+}
+
+.btn-tcb{
+  border-color: #8a8a5c;
+  color: #8a8a5c;
+}
+.btn-tcb:hover{
+  border-color: #8a8a5c;
+  background: #8a8a5c;
+}
+
+
+.btn-mcm{
+  border-color: #ff3300;
+  color: #ff3300;
+}
+.btn-mcm:hover{
+  border-color: #ff3300;
+  background: #ff3300;
+}
+
+.bg-baw{
+  background: #000000;
+  color: #fff;
+  padding: 1%;
+}
+
+@media (max-width: 575px) {
+  body{
+    font-family: helvetica;
+  }
+
+  .bg-mahlus{
+    background-image: url(w.jpg);
+    color: #fff;
+  }
+  .bg-mahlus h2{
+    color: #fff;
+    font-size: 24pt;
+  }
+  .bg-mahlus p{
+    font-size: 20px;
+  }
+
+  .col-sm-6{
+    max-width: 575px;
+  }
+
+}

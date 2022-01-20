@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add2Number | Abazmu</title>
+    <meta name="vewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Bootstrap css & JS -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <script src="../assets/js/bootstrap.js"></script>
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+
+    <!-- Add additional services you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-functions.js"></script>
+
+    <!-- Comment out (or don't include) services you don't want to use -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-storage.js"></script> -->
+
+    <script>
+      var config = {
+        // ...
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      // TODO: Replace with your project's customized code snippet
+      var config = {
+        apiKey: "<API_KEY>",
+        authDomain: "<PROJECT_ID>.firebaseapp.com",
+        databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
+        projectId: "<PROJECT_ID>",
+        storageBucket: "<BUCKET>.appspot.com",
+        messagingSenderId: "<SENDER_ID>",
+      };
+      firebase.initializeApp(config);
+    </script>
+
+  </head>
+  <style>
+
+  body{
+    font-family: helvetica;
+  }
+
+  .bg-mahlus{
+    background: #1a75ff;
+    color: #fff;
+  }
+  .bg-isi{
+    margin-bottom: 2%;
+  }
+  .bg-baw{
+    background: #000000;
+    color: #fff;
+    padding: 2%;
+  }
+
+  .bg-calcs{
+    margin: 0;
+    padding: 4%;
+    font-family: monospace;
+  }
+  #inputNilai{
+    font-size: 18pt;
+    font-weight: bold;
+  }
+
+  #operaasi{
+    font-size: 18pt;
+    font-weight: bold;
+  }
+
+  button{
+    width: 50px;
+    height: 50px;
+  }
+  .opTambah{
+    background: #800000;
+    color: #fff;
+    font-size: 14pt;
+  }
+  .opKurang{
+    background: #ffff00;
+    color: #000;
+    font-size: 14pt;
+  }
+  .opKali{
+    background: #66ff33;
+    color: #000;
+    font-size: 14pt;
+  }
+  .opBagi{
+    background: #ff0066;
+    color: #fff;
+    font-size: 14pt;
+  }
+
+  .reseult{
+    background: #ff0066;
+    color: #fff;
+    font-size: 14pt;
+  }
+  </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark "style="background-color: #1a1a1a;">
+        <a class="navbar-brand" href="#">Abazmu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active">~ <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="../index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">About</a>
+            <a class="nav-item nav-link" href="#">Contact</a>
+            <a class="nav-item nav-link disabled" href="#">Blog</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="jumbotron bg-mahlus">
+      <h3>Calculator</h3>
+      <p>Make your simple your life.</p>
+    </div>
+
+    <div class="container-fluid bg-isi">
+
+
+      <div class="container bg-calcs">
+        <label id="inputNilai"for="inputan">Input Nilai</label>
+        <input class="form-control"type='text' name='nilai' placeholder='input'/>
+        <br>
+        <label id="operaasi" for="choiceOperator">Pilih Operasi</label>
+        <br>
+        <button class="opTambah" onclick="tambah()">+</button>
+        <button class="opKurang" onclick="kurang()">-</button>
+        <button class="opKali" onclick="kali()">*</button>
+        <button class="opBagi" onclick="bagi()">/</button> ||
+
+        <button class="result" onclick='hitung()' style="width: 80px; background: #000000; color: #fff; font-size: 14pt;">Hasil</button>
+        <br><br>
+        <label id="operaasi" for="choiceOperator">Tampilkan Hasil</label>
+        <input class="form-control"type='text' name='hasil' placeholder='output'/>
+      </div>
+
+      <script>
+      function tambah(){
+        val = document.getElementsByName('nilai')[0].value;
+        document.getElementsByName('nilai')[0].value += "+";
+      }
+      function kurang(){
+        val = document.getElementsByName('nilai')[0].value;
+        document.getElementsByName('nilai')[0].value += "-";
+      }
+      function kali(){
+        val = document.getElementsByName('nilai')[0].value;
+        document.getElementsByName('nilai')[0].value += "*";
+      }
+      function bagi(){
+        val = document.getElementsByName('nilai')[0].value;
+        document.getElementsByName('nilai')[0].value += "/";
+      }
+      function hitung(){
+        val = document.getElementsByName('nilai')[0].value;
+        document.getElementsByName('hasil')[0].value = eval(val);
+      }
+      </script>
+    </div>
+
+    <footer>
+      <div class="container-fluid bg-baw text-center">
+        <p>Copyright &copy; 2018 <strong>Abazmu</strong></p>
+      </div>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Abazmu | Leaflet Maps</title>
+    <meta name="vewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Bootstrap css & JS -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <script src="../assets/js/bootstrap.js"></script>
+
+    <!-- Abazmu Css & js -->
+    <link rel="stylesheet" href="style.css">
+    <script src="../assets/js/peta.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="crossorigin=""></script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark "style="background-color: #1a1a1a;">
+        <a class="navbar-brand" href="#">Abazmu | Fecth Map</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active">~ <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="../index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">About</a>
+            <a class="nav-item nav-link" href="#">Contact</a>
+            <a class="nav-item nav-link disabled" href="#">Blog</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="jumbotron bg-mahlus">
+      <h2>Mapbox</h2>
+      <p>Tempat Nongki Terpopuler Penikmat Kopi</p>
+    </div>
+
+    <div class="container-fluid leaflet">
+      <div class="row">
+        <div class="col-6">
+          <div id="mapid"></div>
+        </div>
+        <div class="col-6">
+          <h3>The Most Populer Cafe on Perintis Kemerdekan by <strong>Abazmu</strong> </h3>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <button class="btn btn-outline-primary btn-block btn-cc" onclick="preview('cc')">Coffee Crime</button>
+            </li>
+            <li class="list-group-item">
+              <button class="btn btn-outline-primary btn-block btn-dbs" onclick="preview('dbs')">Warkop Daeng Boss</button>
+            </li>
+            <li class="list-group-item">
+              <button class="btn btn-outline-primary btn-block btn-bugs" onclick="preview('bugs')">Boegiz Cafe</button>
+            </li>
+            <li class="list-group-item">
+              <button class="btn btn-outline-primary btn-block btn-pkpi" onclick="preview('pkpi')">Pakopi Coffee Shop</button>
+            </li>
+            <li class="list-group-item">
+              <button class="btn btn-outline-primary btn-block btn-tcb" onclick="preview('tcb')">Tiber Coffee Brown</button>
+            </li>
+            <li class="list-group-item">
+              <button class="btn btn-outline-primary btn-block btn-mcm" onclick="preview('mcm')">Metro Cafe Makassar</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <footer>
+      <div class="container-fluid bg-baw text-center">
+        <p>Copyright &copy; 2018 <strong>Abazmu</strong></p>
+      </div>
+    </footer>
+
+    <script>
+      var mymap = L.map('mapid').setView([-5.140664199141215, 119.49444770536299],14);
+      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+
+          id: 'mapbox.streets',
+          accessToken: 'pk.eyJ1IjoiYmFyYXFhdHUiLCJhIjoiY2pseDJ3amw3MDY4NTNrbWM2eW1jeHRrbCJ9.GNK5zvXVwxdgyshDx1hYxA'
+      }).addTo(mymap);
+
+      mymap.on('click', onMapClick);
+      function onMapClick(e){
+        console.log("potition here: "+ e.latlng);
+      }
+
+      //var popup = L.popup();
+      //function onMapClick(e){
+        //popup
+          //.setLatLng(e.latlng)
+          //.setContent("<h3>Baraqatu Studio</h3><hr>"+"Disini saya tumbuh dan berkembang, memulai langkah awal menjadi sorang Manusia, dan disini juga saya tidur dan banyak hal yang saya lakukan disini. <br> Posisi: " + e.latlng.toString())
+          //.openOn(mymap);
+      //}
+      //mymap.on('click', onMapClick);
+
+      //var marker = L.marker ([-5.140664199141215, 119.49444770536299]).addTo(mymap);
+
+      var coCrime = L.marker([-5.1415011,119.4791178]).addTo(mymap);
+      coCrime.bindPopup('<strong><a href="https://goo.gl/maps/QHrumxoAvaU2" target="_blank" style="color: #000;">Coffe Crime</a></strong> <br> <img src="landmark/coffecrime.jpg" style="height="50px"; width="100%;">');
+
+      var daengBoss = L.marker([-5.1421098,119.4826887]).addTo(mymap);
+      daengBoss.bindPopup('<strong><a href="https://goo.gl/maps/QHrumxoAvaU2" target="_blank" style="color: #000;">Warkop Daeng Boss</a></strong> <br> <img src="landmark/dgboss.jpg" style="height="50px"; width="100%;">');
+
+      var boegizCafe = L.marker([-5.141344,119.4958119]).addTo(mymap);
+      boegizCafe.bindPopup('<strong><a href="https://goo.gl/maps/QHrumxoAvaU2" target="_blank" style="color: #000;">Boegiz Cafe</a></strong> <br> <img src="landmark/boegiz.jpg" style="height="50px"; width="100%;">');
+
+      var pakopiCoffeShop = L.marker([-5.1321124,119.4989714]).addTo(mymap);
+      pakopiCoffeShop.bindPopup('<strong><a href="https://goo.gl/maps/QHrumxoAvaU2" target="_blank" style="color: #000;">Pakopi Coffee Shop</a></strong> <br> <img src="landmark/pakopi.jpg" style="height="50px"; width="100%;">');
+
+      var tiberCoffeBrown = L.marker([-5.1278402,119.5002169]).addTo(mymap);
+      tiberCoffeBrown.bindPopup('<strong><a href="https://goo.gl/maps/QHrumxoAvaU2" target="_blank" style="color: #000;">Tiber Coffee Brown</a></strong> <br> <img src="landmark/tiber.jpg" style="height="50px"; width="100%;">');
+
+      var metroCafeMakassar = L.marker([-5.1229626,119.5080886]).addTo(mymap);
+      metroCafeMakassar.bindPopup('<strong><a href="https://goo.gl/maps/QHrumxoAvaU2" target="_blank" style="color: #000;">Metro Cafe Makassar</a></strong> <br> <img src="landmark/mcm.jpeg" style="height="50px"; width="100%;">');
+
+
+      function preview(name){
+        switch (name) {
+          case 'cc':
+            coCrime.bindPopup('<strong><a href="https://goo.gl/maps/QHrumxoAvaU2" target="_blank" style="color: #000;">Coffe Crime</a></strong> <br> <img src="landmark/coffecrime.jpg" style="height="50px"; width="100%;">').openPopup();
+            break;
+
+          case 'dbs':
+            daengBoss.bindPopup('<strong><a href="https://goo.gl/maps/QHrumxoAvaU2" target="_blank" style="color: #000;">Warkop Daeng Boss</a></strong> <br> <img src="landmark/dgboss.jpg" style="height="50px"; width="100%;">').openPopup();
+            break;
+
+          case 'bugs':
+            boegizCafe.bindPopup('<strong><a href="https://goo.gl/maps/QHrumxoAvaU2" target="_blank" style="color: #000;">Boegiz Cafe</a></strong> <br> <img src="landmark/boegiz.jpg" style="height="50px"; width="100%;">').openPopup();
+            break;
+
+          case 'pkpi':
+            pakopiCoffeShop.bindPopup('<strong><a href="https://goo.gl/maps/QHrumxoAvaU2" target="_blank" style="color: #000;">Pakopi Coffee Shop</a></strong> <br> <img src="landmark/pakopi.jpg" style="height="50px"; width="100%;">').openPopup();
+            break;
+
+          case 'tcb':
+            tiberCoffeBrown.bindPopup('<strong><a href="https://goo.gl/maps/QHrumxoAvaU2" target="_blank" style="color: #000;">Tiber Coffee Brown</a></strong> <br> <img src="landmark/tiber.jpg" style="height="50px"; width="100%;">').openPopup();
+            break;
+
+          case 'mcm':
+            metroCafeMakassar.bindPopup('<strong><a href="https://goo.gl/maps/QHrumxoAvaU2" target="_blank" style="color: #000;">Metro Cafe Makassar</a></strong> <br> <img src="landmark/mcm.jpeg" style="height="50px"; width="100%;">').openPopup();
+            break;
+
+          default:
+            break;
+
+        }
+      }
+
+      function show(){
+        coCrime.bindPopup('<strong><a href="https://goo.gl/maps/QHrumxoAvaU2" target="_blank" style="color: #000;">Coffe Crime</a></strong> <br> <img src="landmark/coffecrime.jpg" style="height="50px"; width="100%;">');
+      }
+      //var polygon = L.polygon([[51.509, -0.08],[51.503, -0.06],[51.51, -0.047]]).addTo(mymap);
+    </script>
+
+
+  </body>
+</html>

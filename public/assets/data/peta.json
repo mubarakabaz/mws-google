@@ -1,0 +1,45 @@
+{
+  "places" : [
+    {
+      "lokasi" : [-5.1415011,119.4791178],
+      "coffee" : "Coffee Crime",
+      "gambar" : "../project3/landmark/coffecrime.jpg",
+      "review" : "Tempat Yang wajib kalian kunjungi jikalau ingin suasana hati senang",
+    },
+
+    {
+      "lokasi" : [-5.1421098,119.4826887],
+      "coffee" : "Warkop Daeng Boss",
+      "gambar" : "../project3/landmark/dgboss.jpg",
+      "review" : "Cocok untuk tempat diskusi",
+    },
+
+    {
+      "lokasi" : [-5.141344,119.4958119],
+      "coffee" : "Boegiz Cafe",
+      "gambar" : "../project3/landmark/boegiz.jpg",
+      "review" : "Buat gamer silahkan merapat, buka 24 jam kok",
+    },
+
+    {
+      "lokasi" : [-5.1321124,119.4989714],
+      "coffee" : "Pakopi Coffe Shop",
+      "gambar" : "../project3/landmark/pakopi.jpg",
+      "review" : "Buat kamu pecinta motor boleh datang kesini, atau mau tanya-tanya seputar motor bisa langsung ke lokasi",
+    },
+
+    {
+      "lokasi" : [-5.1278402,119.5002169],
+      "coffee" : "Tiber Coffee Brown",
+      "gambar" : "../project3/landmark/tiber.jpg",
+      "review" : "no review",
+    },
+
+    {
+      "lokasi" : [-5.1229626,119.5080886],
+      "coffee" : "Metro Cafe Makassar",
+      "gambar" : "../project3/landmark/mcm.jpeg",
+      "review" : "Cocok buat kamu yang mau adakan bazar untuk galang dana Metro cafe ini cocok buat kamu loh.",
+    },
+  ]
+}
